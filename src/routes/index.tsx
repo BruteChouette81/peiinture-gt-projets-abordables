@@ -223,13 +223,15 @@ function Index() {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-foreground/10 bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
           <a href="#" className="flex items-center gap-3" aria-label="Peinture GT — accueil">
-            <img
-              src={logoMark}
-              alt="Logo Peinture GT"
-              className="h-11 w-auto"
-              width={969}
-              height={614}
-            />
+            <span className="rounded-xl bg-paper/90 p-1.5 shadow-sm">
+              <img
+                src={logoMark}
+                alt="Logo Peinture GT"
+                className="h-9 w-auto"
+                width={969}
+                height={614}
+              />
+            </span>
             <span className="hidden font-display text-lg font-semibold tracking-tight sm:inline">
               Peinture GT
             </span>
