@@ -561,7 +561,7 @@ function Index() {
                   name="nom"
                   required
                   placeholder="Votre nom"
-                  className="w-full rounded-xl border border-paper/25 bg-deep/70 px-4 py-3 text-sm text-foreground placeholder:text-paper/60 focus:border-tape focus:outline-none"
+                  className="w-full rounded-xl border border-paper/35 bg-paper/8 px-4 py-3 text-sm text-foreground placeholder:text-paper/75 focus:border-tape focus:outline-none"
                 />
                 <div className="grid gap-4 sm:grid-cols-2">
                   <input
@@ -569,20 +569,20 @@ function Index() {
                     name="courriel"
                     required
                     placeholder="Courriel"
-                    className="w-full rounded-xl border border-paper/25 bg-deep/70 px-4 py-3 text-sm text-foreground placeholder:text-paper/60 focus:border-tape focus:outline-none"
+                    className="w-full rounded-xl border border-paper/35 bg-paper/8 px-4 py-3 text-sm text-foreground placeholder:text-paper/75 focus:border-tape focus:outline-none"
                   />
                   <input
                     type="tel"
                     name="telephone"
                     placeholder="Téléphone (optionnel)"
-                    className="w-full rounded-xl border border-paper/25 bg-deep/70 px-4 py-3 text-sm text-foreground placeholder:text-paper/60 focus:border-tape focus:outline-none"
+                    className="w-full rounded-xl border border-paper/35 bg-paper/8 px-4 py-3 text-sm text-foreground placeholder:text-paper/75 focus:border-tape focus:outline-none"
                   />
                 </div>
                 <select
                   name="type"
                   required
                   defaultValue=""
-                  className="w-full rounded-xl border border-paper/25 bg-deep/70 px-4 py-3 text-sm text-foreground focus:border-tape focus:outline-none"
+                  className="w-full rounded-xl border border-paper/35 bg-paper/8 px-4 py-3 text-sm text-foreground focus:border-tape focus:outline-none"
                 >
                   <option value="" disabled>
                     Type de projet
@@ -598,7 +598,7 @@ function Index() {
                   rows={4}
                   required
                   placeholder="Décrivez votre projet : quelle pièce, quelle couleur, quand…"
-                  className="w-full rounded-xl border border-paper/25 bg-deep/70 px-4 py-3 text-sm text-foreground placeholder:text-paper/60 focus:border-tape focus:outline-none"
+                  className="w-full rounded-xl border border-paper/35 bg-paper/8 px-4 py-3 text-sm text-foreground placeholder:text-paper/75 focus:border-tape focus:outline-none"
                 />
                 <button
                   type="submit"
