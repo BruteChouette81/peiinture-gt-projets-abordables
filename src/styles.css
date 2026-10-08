@@ -154,11 +154,19 @@
   border: 1px solid oklch(1 0 0 / 16%);
 }
 
+@utility glass-navy {
+  background: oklch(0.26 0.06 252 / 80%);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid oklch(1 0 0 / 18%);
+  box-shadow: 0 30px 80px -30px oklch(0 0 0 / 60%);
+}
+
 @utility glass-strong {
-  background: oklch(1 0 0 / 12%);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid oklch(1 0 0 / 20%);
+  background: oklch(0.26 0.05 163 / 72%);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid oklch(1 0 0 / 18%);
 }
 
 /* Apparition douce au chargement */
