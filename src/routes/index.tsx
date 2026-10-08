@@ -24,7 +24,6 @@ const NAV = [
   { label: "Façon de faire", href: "#facon" },
   { label: "Projets", href: "#projets" },
   { label: "À propos", href: "#apropos" },
-  { label: "Facebook", href: "#facebook" },
 ];
 
 const STEPS = [
