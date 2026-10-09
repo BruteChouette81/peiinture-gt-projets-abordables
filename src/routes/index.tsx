@@ -2,28 +2,36 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import heroImg from "@/assets/hero-interior.jpg";
-import beforeLiving from "@/assets/before-living.jpg";
-import afterLiving from "@/assets/after-living.jpg";
-import beforeExterior from "@/assets/before-exterior.jpg";
-import afterExterior from "@/assets/after-exterior.jpg";
-import beforeKitchen from "@/assets/before-kitchen.jpg";
-import afterKitchen from "@/assets/after-kitchen.jpg";
-import pressureWashing from "@/assets/pressure-washing.jpg";
+import pignonAvant from "@/assets/projets/pignon-avant.jpg";
+import pignonApres from "@/assets/projets/pignon-apres.jpg";
+import facadeBleueAvant from "@/assets/projets/facade-bleue-avant.jpg";
+import facadeBleueApres from "@/assets/projets/facade-bleue-apres.jpg";
+import pignonPierreAvant from "@/assets/projets/pignon-pierre-avant.jpg";
+import pignonPierreApres from "@/assets/projets/pignon-pierre-apres.jpg";
+import stAntoineAvant from "@/assets/projets/st-antoine-avant.jpg";
+import stAntoineApres from "@/assets/projets/st-antoine-apres.jpg";
+import stNicolasAvant from "@/assets/projets/st-nicolas-avant.jpg";
+import stNicolasApres from "@/assets/projets/st-nicolas-apres.jpg";
+import revetementAvant from "@/assets/projets/revetement-avant.jpg";
+import revetementApres from "@/assets/projets/revetement-apres.jpg";
+import pressureWashing from "@/assets/projets/lavage-pression.jpg";
+import postPignon from "@/assets/facebook/post-pignon.jpg";
+import postRevetement from "@/assets/facebook/post-revetement.jpg";
+import postPatio from "@/assets/facebook/post-patio.jpg";
+import fbCover from "@/assets/facebook/couverture.jpg";
 import toolsImg from "@/assets/tools.jpg";
-import crewImg from "@/assets/crew.jpg";
-import doorImg from "@/assets/door.jpg";
-import stairsImg from "@/assets/stairs.jpg";
-import accentWall from "@/assets/accent-wall.jpg";
 import logoMark from "@/assets/logo-mark.png";
-import logoFull from "@/assets/logo.png";
+import logoFull from "@/assets/logo-officiel.jpg";
 
-// TODO: remplacer par le lien exact de la page Facebook de Peinture GT
-const FACEBOOK_URL = "https://www.facebook.com/";
+const FACEBOOK_URL = "https://www.facebook.com/peinturegt";
+const PHONE = "418 906-6360";
+const PHONE_HREF = "tel:+14189066360";
+const TERRITOIRE = "Rive-Nord et Rive-Sud de Québec";
+const HEURES = "Lundi au vendredi, 8 h à 17 h";
 
 const NAV = [
   { label: "Façon de faire", href: "#facon" },
   { label: "Projets", href: "#projets" },
-  { label: "À propos", href: "#apropos" },
 ];
 
 const STEPS = [
@@ -55,29 +63,70 @@ const STEPS = [
 
 const BEFORE_AFTER = [
   {
-    before: beforeLiving,
-    after: afterLiving,
-    title: "Salon — intérieur",
-    tag: "Crème chaud + mur vert sauge",
-    aspect: "aspect-[5/6]",
-  },
-  {
-    before: beforeExterior,
-    after: afterExterior,
-    title: "Façade — extérieur",
-    tag: "Vert pin + trim blanc",
+    before: pignonAvant,
+    after: pignonApres,
+    title: "Pignon écaillé",
+    tag: "Décapage, sablage, 2 couches",
     aspect: "aspect-[4/3]",
   },
   {
-    before: beforeKitchen,
-    after: afterKitchen,
-    title: "Cuisine — armoires",
-    tag: "Armoires repeintes + vert sauge",
-    aspect: "aspect-[5/6]",
+    before: facadeBleueAvant,
+    after: facadeBleueApres,
+    title: "Façade — revêtement",
+    tag: "Revêtement extérieur repeint",
+    aspect: "aspect-[4/3]",
+  },
+  {
+    before: pignonPierreAvant,
+    after: pignonPierreApres,
+    title: "Pignon au-dessus de la pierre",
+    tag: "Revêtement qui écaillait",
+    aspect: "aspect-[4/3]",
+  },
+  {
+    before: stAntoineAvant,
+    after: stAntoineApres,
+    title: "Revêtement de bois",
+    tag: "Saint-Antoine",
+    aspect: "aspect-[3/4]",
+  },
+  {
+    before: stNicolasAvant,
+    after: stNicolasApres,
+    title: "Terrasse de bois",
+    tag: "Saint-Nicolas",
+    aspect: "aspect-[3/4]",
+  },
+  {
+    before: revetementAvant,
+    after: revetementApres,
+    title: "Revêtement qui pèle",
+    tag: "Apprêt + 2 couches",
+    aspect: "aspect-[3/4]",
   },
 ];
 
-const FB_WALL = [doorImg, accentWall, stairsImg, heroImg];
+// Publications réelles de la page Facebook (mises en ligne le 11 août 2026)
+const FB_POSTS = [
+  {
+    img: postPignon,
+    aspect: "aspect-[4/3]",
+    alt: "Avant/après d'un pignon écaillé repeint, publié sur Facebook",
+    text: "Même mur. Même évent. Deux photos prises le même jour. Le revêtement n'avait pas besoin d'être remplacé — il avait besoin d'être décapé, sablé, apprêté et repeint comme il faut.",
+  },
+  {
+    img: postRevetement,
+    aspect: "aspect-[4/5]",
+    alt: "Avant/après d'un revêtement qui pèle autour d'une fenêtre, publié sur Facebook",
+    text: "Ce revêtement-là, la moitié des gens l'auraient fait remplacer. Décapage, sablage, apprêt, deux couches. Même bois, même maison — une fraction du prix du neuf.",
+  },
+  {
+    img: postPatio,
+    aspect: "aspect-[4/5]",
+    alt: "Avant/après d'un patio lavé sous pression puis repeint, publié sur Facebook",
+    text: "Un patio gris, ce n'est pas juste laid. C'est du bois qui commence à boire l'eau. Lavage sous pression, sablage, deux couches. Deux jours, et il est reparti pour des années.",
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -88,7 +137,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Peinture résidentielle intérieure et extérieure à prix abordables, fondée par des étudiants expérimentés. Soumission gratuite, tout le matériel fourni, chantier nettoyé.",
+          "Peinture de revêtement, de patio et d'intérieur sur la Rive-Nord et la Rive-Sud de Québec. Lavage, sablage, apprêt au besoin, deux couches. Soumission gratuite : 418 906-6360.",
       },
       {
         property: "og:title",
@@ -149,9 +198,7 @@ function Reveal({
 }
 
 function Eyebrow({ children }: { children: ReactNode }) {
-  return (
-    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-tape">{children}</p>
-  );
+  return <p className="text-xs font-semibold uppercase tracking-[0.22em] text-tape">{children}</p>;
 }
 
 function TapeStrip() {
@@ -237,12 +284,22 @@ function Index() {
           </a>
           <nav className="hidden items-center gap-7 text-sm font-medium text-foreground/75 md:flex">
             {NAV.map((item) => (
-              <a key={item.href} href={item.href} className="transition-colors hover:text-foreground">
+              <a
+                key={item.href}
+                href={item.href}
+                className="transition-colors hover:text-foreground"
+              >
                 {item.label}
               </a>
             ))}
           </nav>
           <div className="flex items-center gap-2">
+            <a
+              href={PHONE_HREF}
+              className="hidden px-2 text-sm font-semibold text-foreground/85 transition-colors hover:text-tape lg:inline"
+            >
+              {PHONE}
+            </a>
             <a
               href={FACEBOOK_URL}
               target="_blank"
@@ -277,15 +334,15 @@ function Index() {
         <div className="absolute inset-0 grid place-items-center px-5 pt-16">
           <div className="glass-strong rise max-w-2xl rounded-3xl p-8 text-center shadow-2xl sm:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-tape">
-              Peinture résidentielle · Intérieur & extérieur
+              Revêtement · Patio · Intérieur — région de Québec
             </p>
             <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.08] text-balance sm:text-5xl">
               Peinture clé en main, à prix abordables.
             </h1>
             <p className="mx-auto mt-5 max-w-[48ch] text-pretty text-base text-foreground/85">
-              Fondée par des étudiants avec beaucoup d'expérience en peinture, Peinture GT rend tous
-              vos projets possibles — soumission gratuite, tout le matériel fourni, chantier nettoyé
-              à la fin.
+              Fondée par des étudiants avec plusieurs années d'expérience en peinture, Peinture GT
+              rend tous vos projets possibles. Soumission gratuite, tout le matériel fourni,
+              chantier nettoyé à la fin.
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
               <a
@@ -343,15 +400,15 @@ function Index() {
             <figure className="group overflow-hidden rounded-2xl outline-1 -outline-offset-1 outline-border">
               <img
                 src={pressureWashing}
-                alt="Lavage à pression du revêtement extérieur d'une maison"
+                alt="Un peintre de Peinture GT lave un patio de bois sous pression avant de le peindre"
                 loading="lazy"
-                width={1408}
-                height={1008}
+                width={1050}
+                height={1400}
                 className="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <figcaption className="bg-card px-4 py-3 text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">Lavage à pression</span> — on prépare
-                la façade avant de peindre.
+                <span className="font-medium text-foreground">Lavage à pression</span> — sur un vrai
+                chantier de patio, avant le sablage.
               </figcaption>
             </figure>
           </Reveal>
@@ -406,54 +463,6 @@ function Index() {
         </Reveal>
       </section>
 
-      <TapeStrip />
-
-      {/* ===== À propos ===== */}
-      <section id="apropos" className="mx-auto max-w-6xl px-5 py-24">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <Reveal>
-            <Eyebrow>À propos</Eyebrow>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-balance sm:text-4xl">
-              Des étudiants le jour, des peintres de métier.
-            </h2>
-            <p className="mt-5 text-pretty leading-relaxed text-muted-foreground">
-              Peinture GT a été fondée par des étudiants qui ont accumulé beaucoup d'expérience dans
-              le domaine de la peinture. On a commencé avec deux pinceaux et un char — aujourd'hui,
-              on a des centaines de murs derrière nous.
-            </p>
-            <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-              Et on garde les prix abordables, justement : notre mission, c'est de rendre tous les
-              projets possibles, pas juste ceux avec un gros budget.
-            </p>
-            <ul className="mt-7 grid gap-3 text-sm">
-              {[
-                "Soumission gratuite et sans engagement",
-                "Tout le matériel fourni",
-                "Deux couches de peinture, toujours",
-                "Chantier nettoyé à la fin",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="size-2 rounded-full bg-tape" aria-hidden />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-          <Reveal delay={120}>
-            <figure className="overflow-hidden rounded-3xl outline-1 -outline-offset-1 outline-border">
-              <img
-                src={crewImg}
-                alt="Deux jeunes peintres souriants marchant sur le terrain avec une échelle et un rouleau"
-                loading="lazy"
-                width={1408}
-                height={1200}
-                className="h-[460px] w-full object-cover"
-              />
-            </figure>
-          </Reveal>
-        </div>
-      </section>
-
       {/* ===== Facebook ===== */}
       <section id="facebook" className="bg-navy">
         <div className="mx-auto max-w-6xl px-5 py-24">
@@ -476,20 +485,59 @@ function Index() {
                 Suivre Peinture GT sur Facebook →
               </a>
             </Reveal>
-            <div className="grid grid-cols-2 gap-4">
-              {FB_WALL.map((src, i) => (
-                <Reveal key={src + i} delay={i * 80}>
-                  <div className="overflow-hidden rounded-2xl outline-1 -outline-offset-1 outline-foreground/15">
+            <Reveal delay={80}>
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="group block overflow-hidden rounded-2xl outline-1 -outline-offset-1 outline-foreground/15"
+              >
+                <img
+                  src={fbCover}
+                  alt="Couverture de la page Facebook Peinture GT : revêtement, patio, intérieur — région de Québec"
+                  loading="lazy"
+                  width={1640}
+                  height={664}
+                  className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </a>
+            </Reveal>
+          </div>
+
+          <div className="mt-12 grid items-start gap-6 md:grid-cols-3">
+            {FB_POSTS.map((post, i) => (
+              <Reveal key={post.img} delay={i * 80}>
+                <a
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex flex-col overflow-hidden rounded-2xl bg-paper text-navy outline-1 -outline-offset-1 outline-foreground/15"
+                >
+                  <div className="flex items-center gap-3 px-4 py-3">
+                    <span className="rounded-full bg-white p-1 outline-1 outline-navy/10">
+                      <img src={logoMark} alt="" className="h-7 w-7 object-contain" />
+                    </span>
+                    <div className="leading-tight">
+                      <p className="text-sm font-semibold">Peinture GT</p>
+                      <p className="text-xs text-navy/60">facebook.com/peinturegt</p>
+                    </div>
+                  </div>
+                  <p className="px-4 pb-3 text-sm text-pretty text-navy/85">{post.text}</p>
+                  <p className="px-4 pb-3 text-sm font-semibold text-navy">📞 {PHONE}</p>
+                  <div className="overflow-hidden">
                     <img
-                      src={src}
-                      alt="Photo de chantier publiée sur la page Facebook de Peinture GT"
+                      src={post.img}
+                      alt={post.alt}
                       loading="lazy"
-                      className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-105"
+                      className={`${post.aspect} w-full object-cover transition-transform duration-700 group-hover:scale-105`}
                     />
                   </div>
-                </Reveal>
-              ))}
-            </div>
+                  <p className="border-t border-navy/10 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-navy/70 transition-colors group-hover:text-navy">
+                    Voir sur notre page Facebook →
+                  </p>
+                </a>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -516,17 +564,31 @@ function Index() {
                   gratuites
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="size-2 rounded-full bg-tape" aria-hidden /> Matériel et nettoyage
-                  inclus
+                  <span className="size-2 rounded-full bg-tape" aria-hidden /> Peinture et matériel
+                  fournis
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="size-2 rounded-full bg-tape" aria-hidden /> {TERRITOIRE}
                 </li>
               </ul>
+              <div className="mt-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-foreground/60">
+                  Par téléphone · {HEURES.toLowerCase()}
+                </p>
+                <a
+                  href={PHONE_HREF}
+                  className="mt-1 inline-flex font-display text-3xl font-semibold text-foreground transition-colors hover:text-tape"
+                >
+                  {PHONE}
+                </a>
+              </div>
               <a
                 href={FACEBOOK_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex text-sm font-semibold text-tape transition-colors hover:text-primary"
+                className="mt-6 inline-flex text-sm font-semibold text-tape transition-colors hover:text-primary"
               >
-                Pour une réponse encore plus vite : Facebook Messenger →
+                Ou écrivez-nous sur Facebook Messenger →
               </a>
             </div>
 
@@ -590,14 +652,14 @@ function Index() {
                   <option className="bg-background">Intérieur</option>
                   <option className="bg-background">Extérieur</option>
                   <option className="bg-background">Intérieur et extérieur</option>
-                  <option className="bg-background">Armoires / mobilier</option>
+                  <option className="bg-background">Patio / galerie</option>
                   <option className="bg-background">Autre</option>
                 </select>
                 <textarea
                   name="message"
                   rows={4}
                   required
-                  placeholder="Décrivez votre projet : quelle pièce, quelle couleur, quand…"
+                  placeholder="Décrivez votre projet : revêtement, patio ou intérieur, ville, quand…"
                   className="w-full rounded-xl border border-paper/35 bg-paper/8 px-4 py-3 text-sm text-foreground placeholder:text-paper/75 focus:border-tape focus:outline-none"
                 />
                 <button
@@ -617,23 +679,39 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 py-14">
           <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-center">
             <div className="rise">
-              <img
-                src={logoFull}
-                alt="Peinture Grand Tronc — Qualité, fiabilité, fini impeccable"
-                loading="lazy"
-                width={1024}
-                height={1088}
-                className="h-40 w-auto"
-              />
+              {/* Le logo est marine et vert : il doit reposer sur un fond clair pour garder ses vraies couleurs */}
+              <span className="inline-block overflow-hidden rounded-2xl bg-white shadow-sm">
+                <img
+                  src={logoFull}
+                  alt="Peinture Grand Tronc — Qualité, fiabilité, fini impeccable"
+                  loading="lazy"
+                  width={800}
+                  height={800}
+                  className="h-44 w-auto"
+                />
+              </span>
               <p className="mt-5 max-w-[52ch] text-sm text-pretty text-foreground/70">
-                Entreprise de peinture résidentielle intérieure et extérieure, fondée par des
-                étudiants expérimentés. Tous les projets possibles, à prix abordables.
+                Peinture de revêtement, de patio et d'intérieur. Qualité professionnelle, prix
+                étudiant. Franchise de Toiture Metalco.
               </p>
+              <ul className="mt-4 space-y-1 text-sm text-foreground/80">
+                <li>
+                  <a href={PHONE_HREF} className="font-semibold transition-colors hover:text-tape">
+                    {PHONE}
+                  </a>
+                </li>
+                <li>{TERRITOIRE}</li>
+                <li>{HEURES}</li>
+              </ul>
             </div>
             <div className="flex flex-col gap-4">
               <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-foreground/75">
                 {NAV.map((item) => (
-                  <a key={item.href} href={item.href} className="transition-colors hover:text-foreground">
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="transition-colors hover:text-foreground"
+                  >
                     {item.label}
                   </a>
                 ))}
@@ -652,8 +730,11 @@ function Index() {
             </div>
           </div>
           <div className="mt-12 flex flex-col gap-2 border-t border-foreground/10 pt-6 text-xs text-foreground/50 sm:flex-row sm:justify-between">
-            <p>© {new Date().getFullYear()} Peinture GT · Peinture résidentielle intérieur & extérieur</p>
-            <p>Soumission gratuite · Matériel fourni · Chantier nettoyé</p>
+            <p>
+              © {new Date().getFullYear()} Peinture GT · Peinture résidentielle intérieur &
+              extérieur
+            </p>
+            <p>Soumission gratuite · Peinture et matériel fournis · Chantier nettoyé</p>
           </div>
         </div>
       </footer>
